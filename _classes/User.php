@@ -47,6 +47,13 @@ class User
 
         return $db->query($query);
     }
+    static function NewWiki($title, $content, $file){
+        global  $db;
+
+        $query = ("INSERT INTO articles (title, content, file) VALUES ('$title', '$content', '$file')");
+
+        return $db->query($query);
+    }
 
     static public function login($email, $password){
         global $db;
