@@ -12,7 +12,7 @@ if(isset($_POST['submit']) && isset($_FILES['pp']['name'])) {
     $uploadFile = $uploadDir . basename($originalFileName);
 
     move_uploaded_file($_FILES['pp']['tmp_name'], $uploadFile);
-        $User = User::NewUser($firstname, $lastname, $email, $password, $file);
+        $User = User::register($firstname, $lastname, $email, $password, $file);
         header("location:index.php?page=login");
 
     }
