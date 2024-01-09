@@ -35,7 +35,17 @@ class User
     static function getAll(): array
     {
         global $db;
-        $result = $db->query("select * from users");
+        
+        $result = $db->query("select * from users where role = 'author'");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+    // ************************************************** GET ADMIN
+
+    static function getAdmin(): array
+    {
+        global $db;
+        
+        $result = $db->query("select * from users where role = 'admin'");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -66,7 +76,7 @@ class User
     /**
      * @throws Exception
      */
-    static function register($firstname, $lastname, $email, $password): bool
+    static function register($firstname, $lastname, $email, $password, $file): bool
     {
         global $db;
 
@@ -81,7 +91,7 @@ class User
         $stm->bindValue(':lastname', $lastname, PDO::PARAM_STR);
         $stm->bindValue(':email', $email, PDO::PARAM_STR);
         $stm->bindValue(':password', $hashed_password, PDO::PARAM_STR);
-        $stm->bindValue(':file', 'default_profile.png', PDO::PARAM_STR);
+        $stm->bindValue(':file', $file, PDO::PARAM_STR);
 
         $execution = $stm->execute();
 
@@ -152,7 +162,18 @@ class User
     static function getAllarticles(): array
     {
         global $db;
+        
         $result = $db->query("SELECT * FROM articles");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // ************************************************** GET ONLY THE LAST 5 ARTICLES
+
+    static function getTheLatestWiki(): array
+    {
+        global $db;
+        
+        $result = $db->query("SELECT * FROM articles ORDER BY create_at DESC LIMIT 5");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
