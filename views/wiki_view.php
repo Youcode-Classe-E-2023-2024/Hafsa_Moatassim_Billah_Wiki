@@ -14,7 +14,7 @@
         <?php 
         $id = $_SESSION['c'];
         $wiki = User::getAllarticles($id);
-
+        
         foreach($wiki as $article){ ?>
 
         <div class="w-full p-4 md:w-1/2 lg:w-1/4">
