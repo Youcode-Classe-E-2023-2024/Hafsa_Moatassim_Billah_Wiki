@@ -1,10 +1,12 @@
 <?php
-
+require __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 include_once '_config/config.php';
 include_once '_functions/functions.php';
 include_once '_config/db.php';
 
-// dd($_SERVER['PHP_SELF']);
+// dd();
 
 spl_autoload_register(function ($class) {
     include_once '_classes/' . $class . '.php';
