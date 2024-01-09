@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="<?= PATH ?>assets/css/style.css">
 </head>
 <body>
-<div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
-  <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+
+<div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800" <?php echo ($page === 'dashboard') ? 'style="display: none;"' : ''; ?>> 
+ <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
     <div class="p-4 flex flex-row items-center justify-between">
     <a href="index.php?page=home" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">WIKI</a>
       <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
@@ -39,6 +40,6 @@
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
