@@ -1,24 +1,35 @@
 <?php
 
 class User
-{
+{   
     public $id;
-    public $username;
+    public $firstname;
+    public $lastname;
     public $email;
     private $password;
+    public $file;
 
-    public function __construct($id){
+    public function __construct($id)
+    {
         global $db;
 
-        $result = $db->query("SELECT * FROM users WHERE users_id = '$id'");
-        $user = $result->fetch_assoc();
+        $stmt = $db->prepare("SELECT * FROM users WHERE users_id = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
 
-        $this->id = $user['users_id'];
-       
-        $this->username = $user['username']; 
-        $this->email = $user['email'];
-        $this->password = $user['password'];
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $this->id = $user['users_id'];
+            $this->firstname = $user['firstname'];
+            $this->lastname = $user['lastname'];
+            $this->email = $user['email'];
+            $this->password = $user['password'];
+        }
     }
+
+    // *************************ALL USER
 
     static function getAll()
     {
@@ -30,23 +41,29 @@ class User
     function edit()
     {
         global $db;
-        return $db->query("UPDATE users SET email = '$this->email', username = '$this->username' WHERE users_id = '$this->id'");
+        return $db->query("UPDATE users SET email = '$this->email', firstname = '$this->firstname', lastname = '$this->lastname' WHERE users_id = '$this->id'");
     }
 
-    public function setPassword($pwd)
+    // public function setPassword($pwd)
+    // {
+    //     $this->password = password_hash($pwd, PASSWORD_DEFAULT);
+    // }
+
+    // *************************NEW USER
+
+    static function NewUser($firstname, $lastname, $email, $password, $file)
     {
-        $this->password = password_hash($pwd, PASSWORD_DEFAULT);
-    }
-
-
-    static function NewUser($username, $email, $password, $file){
-        global  $db;
+        global $db;
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $query = ("INSERT INTO users (username, email, password, file) VALUES ('$username', '$email', '$hashedPassword','$file')");
 
-        return $db->query($query);
+        $stmt = $db->prepare("INSERT INTO users (firstname, lastname, email, password, file) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssss', $firstname, $lastname, $email, $hashedPassword, $file);
+
+        return $stmt->execute();
     }
+    // *************************NEW ARTICLE
+
     static function NewWiki($title, $content, $file){
         global  $db;
 
@@ -55,28 +72,20 @@ class User
         return $db->query($query);
     }
 
-    static public function login($email, $password){
+    // *************************LOGIN
+
+    static function login($email, $password)
+    {
         global $db;
 
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $db->prepare($sql);
-
-        if (!$stmt) {
-            return "Error preparing statement: " . $db->error;
-        }
-
+        $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
 
         $result = $stmt->get_result();
 
-        if (!$result) {
-            return "Error getting result set: " . $stmt->error;
-        }
-
-        $user = $result->fetch_assoc();
-
-        if ($user) {
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
             if (password_verify($password, $user['password'])) {
                 return $user['users_id'];
             } else {
@@ -85,6 +94,7 @@ class User
         } else {
             return false;
         }
-
     }
+
+    
 }
