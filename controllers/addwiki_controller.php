@@ -1,8 +1,11 @@
 <?php 
+if (!isset($_SESSION['x'])) {
+    header("location: index.php?page=login");
+}
 
 if(isset($_POST['submit']) && isset($_FILES['img']['name'])) {
-    $username = $_POST['title'];
-    $email = $_POST['content'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
     $file = $_FILES['img']['name'];
 
     $uploadDir = 'assets/image/';
