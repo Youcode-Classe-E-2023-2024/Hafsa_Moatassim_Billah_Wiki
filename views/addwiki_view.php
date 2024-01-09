@@ -1,10 +1,11 @@
 
+
     <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Wiki</div>
     <style>
       body {background: #eef2ff !important;}
     </style>
 
-<form action="index.php?page=addwiki" class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" enctype="multipart/form-data">
+<form action="index.php?page=addwiki" method="post" class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" enctype="multipart/form-data">
         <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"  placeholder="Title" name="title" type="text">
         <textarea class="description bg-gray-100 sec p-3 h-30 border border-gray-300 outline-none"  name="content" placeholder="Describe everything about this post here"></textarea>
 
