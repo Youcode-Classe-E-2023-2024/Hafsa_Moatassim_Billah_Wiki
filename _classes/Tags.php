@@ -19,10 +19,19 @@ class Tags
 
     static function create($tag){
         global $db;
-        $stmt = $db->prepare('INSERT INTO tags (tag) VALUES (:tag)');
-        $stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
+        $stmt = $db->prepare('INSERT INTO tags (name) VALUES (:tagName)');
+        $stmt->bindValue(':tagName', $tag, PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    static function getAllTags() : array
+    {
+        global $db;
+        
+        $result = $db->query("select * from tags");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // public function edit($tag_id, $tag){
     //     $this->getTags();
     //     foreach ($tags as $tag) {
