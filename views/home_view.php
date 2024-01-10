@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="hidden lg:block lg:w-1/2" style="clip-path:polygon(10% 0, 100% 0%, 100% 100%, 0 100%)">
-            <div class="h-full object-cover" style="background-image: url(https://img.freepik.com/vecteurs-libre/lire-livres-encyclopedies-etudiants-qui-etudient-apprennent-evenements-bibliotheque-publique-tutorat-ateliers-gratuits-concept-aide-aux-devoirs-bibliotheque-illustration-isolee-violette-vibrante-lumineuse_335657-442.jpg?w=1060&t=st=1704746813~exp=1704747413~hmac=eb0c5ccc8680e321c8f34d5f84553790f2cd94d0bd88475a04e116eae5a6dced)">
+            <div class="h-full object-cover" style="background-image: url(https://images.pexels.com/photos/3769017/pexels-photo-3769017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)">
                 <div class="h-full bg-black opacity-25"></div>
             </div>
         </div>
