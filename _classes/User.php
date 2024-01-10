@@ -195,6 +195,25 @@ class User
         return null;
     }
     }
+    
+    // ************************************************** GET CATEGORIES
+
+        static function getCategory($articleId): ?array
+        {
+        global $db;
+        $query = "SELECT * FROM articles WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $articleId, PDO::PARAM_INT);
+        $exe = $stm->execute();
+    
+        if ($exe) {
+            $result = $stm->fetch(PDO::FETCH_ASSOC);
+    
+            return $result !== false ? $result : null;
+        } else {
+            return null;
+        }
+        }
 
     // ************************************************** SOFT DELETE
 
