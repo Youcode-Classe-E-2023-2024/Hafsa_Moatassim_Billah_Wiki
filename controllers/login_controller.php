@@ -7,6 +7,9 @@ if(isset($_POST['submit'])){
         $_SESSION['x'] = 'logout';
         $_SESSION['c'] = $User["id"];
         header('location: index.php?page=wiki');
+        if($User['role'== 'admin']){
+            header('location: index.php?page=dashboard');
+        }
     } else {
         header('location: index.php?page=login');
         echo 'incorrect password';
