@@ -76,7 +76,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 p-2">
             
                     <div class="bg-white p-4 rounded-md">
-                        <h2 class="text-gray-500 text-lg font-semibold pb-1">Users</h2>
+                        <h2 class="text-gray-950 text-lg font-semibold pb-1">Users</h2>
                         <div class="my1-"></div> 
                         <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px  mb-6"></div> 
                         <div class="chart-container" style="position: relative; height:150px; width:100%">
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="bg-white p-4 rounded-md">
-                        <h2 class="text-gray-500 text-lg font-semibold pb-1">Articles</h2>
+                        <h2 class="text-gray-950 text-lg font-semibold pb-1">Articles</h2>
                         <div class="my-1"></div> 
                         <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
                         <div class="chart-container" style="position: relative; height:150px; width:100%">
@@ -96,17 +96,17 @@
      <!-- *************************************DISPLAY USERS****************************************** -->
 
                 <div class="bg-white p-4 rounded-md">
-                    <h2 class="text-gray-500 text-lg font-semibold pb-4">Users</h2>
+                    <h2 class="text-gray-950 text-lg font-semibold pb-4">Users</h2>
                     <div class="my-1"></div> 
                     <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
                     <table class="w-full table-auto text-sm">
                         <thead>
                             <tr class="text-sm leading-normal text-gray-600">
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">ID</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Image</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Name</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Email</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">OP</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">ID</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Image</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Name</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Email</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">OP</th>
                             </tr>
                         </thead>
 
@@ -135,30 +135,30 @@
      <!-- *************************************DISPLAY ARTICLES****************************************** -->
 
                 <div class="bg-white p-4 rounded-md mt-4">
-                            <h2 class="text-gray-500 text-lg font-semibold pb-4">Articles</h2>
+                            <h2 class="text-gray-950 text-lg font-semibold pb-4">Articles</h2>
                             <div class="my-1"></div> 
                             <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
                     <table class="w-full table-auto text-sm">
                         <thead>
                             <tr class="text-sm leading-normal text-gray-700">
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">ID</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Title</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Created By</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Create Date</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Op</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">ID</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Title</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Created By</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Create Date</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">Op</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
                                 $id = $_SESSION['c'];
-                                $wiki = User::getTheLatestWiki($id);
+                                $wiki = Wiki::getTheLatestWiki($id);
                                 foreach ($wiki as $article) {?>
-                        
+
                             <tr class="hover:bg-grey-lighter text-gray-700">
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['id'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
-                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['firstname'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light text-right"><?= $article['create_at'] ?></td>
                                 <td> 
                                     <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
@@ -172,47 +172,94 @@
                             
                         </tbody>
                     </table>
+
      <!-- *************************************DISPLAY TAGS****************************************** -->
 
                     <div class="bg-white p-4 rounded-md mt-4">
-                            <h2 class="text-gray-500 text-lg font-semibold pb-4">Tags</h2>
+                            <h2 class="text-gray-950 text-lg font-semibold pb-4">Tags</h2>
                             <div class="my-1"></div> 
                             <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
                     <table class="w-full table-auto text-sm">
                         <thead>
                             <tr class="text-sm leading-normal text-gray-700">
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">ID</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Title</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Created By</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Create Date</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Op</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">NAME</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">OPERATION</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
                                 $id = $_SESSION['c'];
-                                $wiki = User::getTheLatestWiki($id);
-                                foreach ($wiki as $article) {?>
+                                $tags = Tags::getAllTags($id);
+                                foreach ($tags as $tag) {?>
                         
                             <tr class="hover:bg-grey-lighter text-gray-700">
-                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['id'] ?></td>
-                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
-                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
-                                <td class="py-2 px-4 border-b border-grey-light text-right"><?= $article['create_at'] ?></td>
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $tag['name'] ?></td>
+
                                 <td> 
+                                    
+                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white 
+                                    data-article-id=<?= $tag['id'] ?>">
+                                    UPDATE 
+                                    </button>
                                     <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
-                                    data-article-id=<?= $article['id'] ?>">
-                                     SD 
+                                    data-article-id=<?= $tag['id'] ?>">
+                                     SOFT DELETE 
                                     </button>
                                     
                                 </td>
+
                             </tr>
                             <?php } ?>
                             
                         </tbody>
                     </table>
                 </div>
+
+                    
+<!-- *************************************DISPLAY CATEGORY****************************************** -->
+
+                <div class="bg-white p-4 rounded-md mt-4">
+                            <h2 class="text-gray-950 text-lg font-semibold pb-4">Category</h2>
+                            <div class="my-1"></div> 
+                            <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
+                    <table class="w-full table-auto text-sm">
+                        <thead>
+                            <tr class="text-sm leading-normal text-gray-700">
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">NAME</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-left">OPERATION</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                                $id = $_SESSION['c'];
+                                $cats = Category::getAllCats();
+                                foreach ($cats as $cat) {?>
+                        
+                            <tr class="hover:bg-grey-lighter text-gray-700">
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $cat['name'] ?></td>
+                                <td> 
+                                    
+                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white 
+                                    data-article-id=<?= $cat['id'] ?>">
+                                    UPDATE 
+                                    </button>
+                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
+                                    data-article-id=<?= $cat['id'] ?>">
+                                     SOFT DELETE 
+                                    </button>
+                                    
+                                </td>
+
+                            </tr>
+                            <?php } ?>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+
                 </div>
             </div>
         </div>
@@ -241,10 +288,10 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tag Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Tag name" required="">
+                        <input type="text" name="tagName" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Tag name" required="">
                     </div>
                 </div>
-                <button type="submit" name="submit" class="text-white inline-flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type="submit" name="tagSubmit" class="text-white inline-flex items-center bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
                     Add new Tag
                 </button>
