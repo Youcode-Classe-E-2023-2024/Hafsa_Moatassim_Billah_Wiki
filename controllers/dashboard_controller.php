@@ -1,8 +1,15 @@
 <?php
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $Tag = Tags::create($firstname, $lastname, $email, $password, $file);
+
+// Tag add
+if (isset($_POST['tagSubmit'])) {
+    $tagName = $_POST['tagName'];
+    $Tage = Tags::create($tagName);
     header("location:index.php?page=dashboard");
-} else {
-    header("location:index.php?page=wiki");
+}
+
+// Tag cat
+if (isset($_POST['submite'])) {
+    $name = $_POST['namee'];
+    $cat = Category::CreateCat($name);
+    header("location:index.php?page=dashboard");
 }
