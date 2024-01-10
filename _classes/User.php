@@ -163,7 +163,7 @@ class User
     {
         global $db;
         
-        $result = $db->query("SELECT * FROM articles");
+        $result = $db->query("SELECT * FROM articles WHERE status = 'published'");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -196,5 +196,24 @@ class User
     }
     }
 
+    // ************************************************** SOFT DELETE
 
+    static function softDeleteArticle($id): bool
+    {
+        global $db;
+    
+        try {
+            $stmt = $db->prepare("UPDATE articles SET status = 'archived' WHERE id_user = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $rowCount = $stmt->rowCount();
+            
+            return $rowCount > 0; 
+        } catch (PDOException $e) {
+            error_log("Error during soft delete: " . $e->getMessage());
+            return false;
+        }
+    }
+    
 }
