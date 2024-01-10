@@ -21,6 +21,7 @@
       <div>
         <div class="pl-12">
           <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
+          <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
           <p class="mb-4 font-semibold text text-black"><?= date('F j, Y', strtotime($wiki['create_at'])) ?></p>
           <p class="peer mb-6 text-black"><?= $wiki['content'] ?></p>
         </div>
