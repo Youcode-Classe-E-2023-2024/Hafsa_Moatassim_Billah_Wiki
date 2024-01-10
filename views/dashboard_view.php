@@ -1,7 +1,8 @@
 <?php
-if (!isset($_SESSION['x'])) {
-    header("location: index.php?page=login");
-} ?>
+// if (!$role['admin']) {
+//     header("location: index.php?page=home");
+// } 
+?>
 
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -90,12 +91,14 @@ if (!isset($_SESSION['x'])) {
                     <table class="w-full table-auto text-sm">
                         <thead>
                             <tr class="text-sm leading-normal text-gray-600">
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">ID</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Image</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Name</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Email</th>
-                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">OPERATION</th>
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">OP</th>
                             </tr>
                         </thead>
+
                         <?php
                             $id = $_SESSION['c'];
                             $users = User::getAll($id);
@@ -103,15 +106,14 @@ if (!isset($_SESSION['x'])) {
                         foreach ($users as $user) {?>
                         <tbody>
                             <tr class="hover:bg-grey-lighter text-gray-700 ">
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $user['id'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><img src="assets/image/<?= $user['file'] ?>"  class="rounded-full h-10 w-10"></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $user['firstname'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $user['email'] ?></td>
-                                <td> <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
-                                    Delete
-                                </button>
-                                <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-500 border-green-600 text-white">
-                                    Update
-                                </button></td>
+                                <td> <button  name ="delete" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
+                                      Delete
+                                     </button>     
+                            </td>
                                 
                             </tr>
                         </tbody>
@@ -128,6 +130,7 @@ if (!isset($_SESSION['x'])) {
                     <table class="w-full table-auto text-sm">
                         <thead>
                             <tr class="text-sm leading-normal text-gray-700">
+                                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">ID</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Title</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Created By</th>
                                 <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light text-right">Create Date</th>
@@ -142,12 +145,17 @@ if (!isset($_SESSION['x'])) {
                                 foreach ($wiki as $article) {?>
                         
                             <tr class="hover:bg-grey-lighter text-gray-700">
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['id'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light text-right"><?= $article['create_at'] ?></td>
-                                <td> <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
-                                    Delete
-                                    </button></td>
+                                <td> 
+                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
+                                    data-article-id=<?= $article['id'] ?>">
+                                     SD 
+                                    </button>
+                                    
+                                </td>
                             </tr>
                             <?php } ?>
                             
@@ -202,6 +210,10 @@ if (!isset($_SESSION['x'])) {
     menuBtn.addEventListener('click', () => {
         sideNav.classList.toggle('hidden'); 
     });
+
+
+    // ******************************************************
+
 </script>
 </body>
 </html>
