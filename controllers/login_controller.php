@@ -4,13 +4,10 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
     $User = User::login($email, $password);
     if ($User !== false){
+        
+        $_SESSION['c'] = $User['id'];
         $_SESSION['x'] = 'logout';
-        $_SESSION['c'] = $User["id"];
-        if($User['role'] == 'admin'){
-            header('location: index.php?page=dashboard');
-        } else {
-            header('location: index.php?page=wiki');
-        }
+       
         exit(); 
     } else {
         header('location: index.php?page=login');
@@ -19,7 +16,7 @@ if(isset($_POST['submit'])){
     }
 }
 
-if (isset($_POST['logout'])) {
+if (isset($_GET['logout'])) {
     session_destroy();
     header('location: index.php?page=home');
     exit(); 
