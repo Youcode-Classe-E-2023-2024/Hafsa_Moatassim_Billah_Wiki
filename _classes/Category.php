@@ -11,12 +11,6 @@ class Category
 
     }
 
-    public function getTags(){
-        global $db;
-        $tags = $db->query('SELECT * FROM tags');
-        return $tags->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     static function CreateCat($cat){
         global $db;
         $stmt = $db->prepare('INSERT INTO categories (name) VALUES (:catName)');
@@ -28,11 +22,19 @@ class Category
     {
         global $db;
         
-        $result = $db->query("SELECT * FROM categories");
+        $result = $db->query("SELECT * FROM categories ORDER BY id DESC");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function edit($tag_id, $tag){
+
+    static public function deleteCat($tag_id){
+        global $db;
+        $stmt = $db->prepare('DELETE FROM categories WHERE cat_id = :cat_id');
+        $stmt->bindValue(':tag_id', $tag_id);
+        $stmt->execute();
+    }
+    
+        // public function edit($tag_id, $tag){
     //     $this->getTags();
     //     foreach ($tags as $tag) {
     //             $tag = $tag['tag'];
@@ -46,13 +48,5 @@ class Category
 
     //     $this->execute();
     // }
-
-
-    static public function deleteCat($tag_id){
-        global $db;
-        $stmt = $db->prepare('DELETE FROM categories WHERE cat_id = :cat_id');
-        $stmt->bindValue(':tag_id', $tag_id);
-        $stmt->execute();
-    }
 
 }
