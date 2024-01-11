@@ -48,9 +48,9 @@ class Category
     // }
 
 
-    public function delete($tag_id){
+    static public function deleteCat($tag_id){
         global $db;
-        $stmt = $db->prepare('DELETE FROM tags WHERE tag_id = :tag_id');
+        $stmt = $db->prepare('DELETE FROM categories WHERE cat_id = :cat_id');
         $stmt->bindValue(':tag_id', $tag_id);
         $stmt->execute();
     }
