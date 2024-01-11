@@ -16,7 +16,7 @@ class Wiki
         global $db;
 
         $user_id = 1;
-        $category_id = 1;
+        $category_id = 4;
         $query = "INSERT INTO articles (title, content, file, id_user, id_category) VALUES (:title, :content, :file, :id_user, :id_category)";
         $stm = $db->prepare($query);
         $stm->bindValue(':title', $title, PDO::PARAM_STR);
@@ -24,7 +24,7 @@ class Wiki
         $stm->bindValue(':id_category', $category_id, PDO::PARAM_INT);
         $stm->bindValue(':content', $content, PDO::PARAM_STR);
         $stm->bindValue(':file', $file, PDO::PARAM_STR);
-        $execution = $stm->execute();
+        $stm->execute();
 
         return true;
     }
@@ -83,22 +83,37 @@ class Wiki
     
     // ************************************************** GET CATEGORIES
 
-        static function getCategory($articleId): ?array
+        static function getCategory(): ?array
         {
         global $db;
-        $query = "SELECT * FROM articles WHERE id = :id";
+        $query = "SELECT * FROM categories";
         $stm = $db->prepare($query);
-        $stm->bindValue(':id', $articleId, PDO::PARAM_INT);
         $exe = $stm->execute();
     
         if ($exe) {
-            $result = $stm->fetch(PDO::FETCH_ASSOC);
-    
-            return $result !== false ? $result : null;
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+            
         } else {
             return null;
         }
         }
+
+ // ************************************************** GETTag
+
+         static function getTag(): ?array
+         {
+         global $db;
+         $query = "SELECT * FROM tags";
+         $stm = $db->prepare($query);
+         $exe = $stm->execute();
+     
+         if ($exe) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+              
+         } else {
+             return null;
+         }
+         }
 
     // ************************************************** SOFT DELETE
 
@@ -107,7 +122,7 @@ class Wiki
         global $db;
     
         try {
-            $stmt = $db->prepare("UPDATE articles SET status = 'archived' WHERE id_user = :id");
+            $stmt = $db->prepare("UPDATE articles SET status = 'archived' WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
     
