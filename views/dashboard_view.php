@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("location: index.php?page=home");
-    exit(); 
-}
+// if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+//     header("location: index.php?page=home");
+//     exit(); 
+// }
 
 $adminData = User::getAdmin();
 ?>
