@@ -49,7 +49,9 @@ class Wiki
         $result = $db->query("SELECT articles.*, users.firstname
         FROM articles
         JOIN users ON articles.id_user = users.id
-        WHERE articles.status = 'published';
+        WHERE articles.status = 'published'
+        ORDER BY create_at DESC
+        LIMIT 5;
         ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
