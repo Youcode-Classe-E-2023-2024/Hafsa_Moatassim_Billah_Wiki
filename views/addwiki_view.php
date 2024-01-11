@@ -14,7 +14,7 @@
             <select class="z-2 mt-1 w-full rounded bg-blue-200 ring-1 ring-gray-300" name="tags[]" required multiple>
               <option value="" disabled selected class="bg-blue-100">Select Tags</option>
               <?php 
-              $tags = Wiki::getTag();
+              $tags = Tags::getAllTags();
               foreach($tags as $tag) {
               ?>
               <option value=""><?= $tag['name']?></option>
@@ -26,7 +26,7 @@
             <select class="z-2 mt-1 w-full rounded bg-blue-100 ring-1 ring-gray-300"  name="category" required>
               <option value="" disabled selected>Select a category</option>
               <?php 
-              $cats = Wiki::getCategory();
+              $cats = Category::getAllCats();
               foreach($cats as $cat) {
               ?>
               <option value=""><?=$cat['name']?></option>
