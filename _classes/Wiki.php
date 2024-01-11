@@ -35,7 +35,7 @@ class Wiki
     {
         global $db;
         
-        $result = $db->query("SELECT * FROM articles WHERE status = 'published'");
+        $result = $db->query("SELECT * FROM articles WHERE status = 'published' ORDER BY create_at DESC");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -80,40 +80,7 @@ class Wiki
         return null;
     }
     }
-    
-    // ************************************************** GET CATEGORIES
 
-        static function getCategory(): ?array
-        {
-        global $db;
-        $query = "SELECT * FROM categories";
-        $stm = $db->prepare($query);
-        $exe = $stm->execute();
-    
-        if ($exe) {
-            return $stm->fetchAll(PDO::FETCH_ASSOC);
-            
-        } else {
-            return null;
-        }
-        }
-
- // ************************************************** GETTag
-
-         static function getTag(): ?array
-         {
-         global $db;
-         $query = "SELECT * FROM tags";
-         $stm = $db->prepare($query);
-         $exe = $stm->execute();
-     
-         if ($exe) {
-            return $stm->fetchAll(PDO::FETCH_ASSOC);
-              
-         } else {
-             return null;
-         }
-         }
 
     // ************************************************** SOFT DELETE
 
