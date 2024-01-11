@@ -118,6 +118,19 @@ class User
         }
     }
 
+    // ************************************************** DELETE
+
+    static function deleteUser($userId)
+    {
+        global $db;
+        $query = "DELETE FROM users WHERE id = :userId";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $exe = $stm->execute();
+
+        return $exe; 
+    }
+
 
     // ************************************************** LOGIN
     /**
@@ -136,8 +149,5 @@ class User
             return false;
         }
     }
-
-
-   
     
 }
