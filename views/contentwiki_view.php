@@ -1,7 +1,7 @@
 <?php 
         $id = $_SESSION['c'];
         $ID = $_GET['id'];
-        $wiki = User::getArticleById($ID);
+        $wiki = Wiki::getArticleById($ID);
 ?>
 
 <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
