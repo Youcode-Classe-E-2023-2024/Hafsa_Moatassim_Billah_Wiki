@@ -1,5 +1,5 @@
 <?php
-// if (!$role['admin']) {
+// if (!$_SESSION['role'=='admin']) {
 //     header("location: index.php?page=home");
 // } 
 ?>
@@ -122,7 +122,7 @@
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $user['firstname'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $user['email'] ?></td>
                                 <td> <button  name ="delete" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
-                                      Delete
+                                      <a href="index.php?page=delete&delete_id=<?= $user['id'] ?>">Delete</a>
                                      </button>     
                             </td>
                                 
@@ -153,17 +153,17 @@
                             <?php
                                 $id = $_SESSION['c'];
                                 $wiki = Wiki::getTheLatestWiki($id);
+                                // dd($wiki);
                                 foreach ($wiki as $article) {?>
 
                             <tr class="hover:bg-grey-lighter text-gray-700">
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['id'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['title'] ?></td>
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $article['firstname'] ?></td>
-                                <td class="py-2 px-4 border-b border-grey-light text-right"><?= $article['create_at'] ?></td>
+                                <td class="py-2 px-4 border-b border-grey-light"><?= $article['create_at'] ?></td>
                                 <td> 
-                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
-                                    data-article-id=<?= $article['id'] ?>">
-                                     SD 
+                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
+                                    <a href="index.php?page=delete&softdelete_id=<?= $article['id'] ?>">SD</a>
                                     </button>
                                     
                                 </td>
@@ -198,13 +198,11 @@
 
                                 <td> 
                                     
-                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white 
-                                    data-article-id=<?= $tag['id'] ?>">
-                                    UPDATE 
+                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
+                                    <a>UPDATE</a>  
                                     </button>
-                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
-                                    data-article-id=<?= $tag['id'] ?>">
-                                     SOFT DELETE 
+                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
+                                    <a href="index.php?page=delete&tagdelete_id=<?= $tag['id'] ?>">DELETE</a> 
                                     </button>
                                     
                                 </td>
@@ -245,9 +243,8 @@
                                     data-article-id=<?= $cat['id'] ?>">
                                     UPDATE 
                                     </button>
-                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white 
-                                    data-article-id=<?= $cat['id'] ?>">
-                                     SOFT DELETE 
+                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
+                                    <a href="index.php?page=delete&catdelete_id=<?= $cat['id'] ?>">DELETE</a> 
                                     </button>
                                     
                                 </td>
