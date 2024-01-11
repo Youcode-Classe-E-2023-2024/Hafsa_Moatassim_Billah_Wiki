@@ -12,8 +12,8 @@
       <div class="-m-4 flex flex-wrap">
         
         <?php 
-        $id = $_SESSION['c'];
-        $wiki = Wiki::getAllarticles($id);
+        // $id = $_SESSION['c'];
+        $wiki = Wiki::getAllarticles();
         foreach($wiki as $article){ ?>
 
         <div class="w-full p-4 md:w-1/2 lg:w-1/4">
