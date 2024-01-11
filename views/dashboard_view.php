@@ -1,7 +1,10 @@
 <?php
-// if (!$_SESSION['role'=='admin']) {
-//     header("location: index.php?page=home");
-// } 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("location: index.php?page=home");
+    exit(); 
+}
+
+$adminData = User::getAdmin();
 ?>
 
 <head>
