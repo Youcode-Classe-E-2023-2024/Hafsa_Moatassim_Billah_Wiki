@@ -139,9 +139,15 @@ class User
     static function login($email, $password)
     {
         $user = self::checkIfUserExist($email);
+    
         if ($user !== false) {
             if (password_verify($password, $user['password'])) {
-                return $user;
+                if ($user['role'] == 'admin') {
+                    header('Location: dashboard.php');
+                    exit();
+                } else {
+                    header('Location: index.php?page=wiki');
+                }
             } else {
                 return false;
             }
