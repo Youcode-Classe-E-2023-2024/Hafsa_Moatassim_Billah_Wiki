@@ -11,12 +11,6 @@ class Tags
 
     }
 
-    public function getTags(){
-        global $db;
-        $tags = $db->query('SELECT * FROM tags');
-        return $tags->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     static function create($tag){
         global $db;
         $stmt = $db->prepare('INSERT INTO tags (name) VALUES (:tagName)');
@@ -28,10 +22,18 @@ class Tags
     {
         global $db;
         
-        $result = $db->query("select * from tags");
+        $result = $db->query("select * from tags ORDER BY id DESC");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    static public function deleteTag($tag_id){
+        global $db;
+        $stmt = $db->prepare('DELETE FROM tags WHERE tag_id = :tag_id');
+        $stmt->bindValue(':tag_id', $tag_id);
+        $stmt->execute();
+    }
+
+    
     // public function edit($tag_id, $tag){
     //     $this->getTags();
     //     foreach ($tags as $tag) {
@@ -46,13 +48,4 @@ class Tags
 
     //     $this->execute();
     // }
-
-
-    static public function deleteTag($tag_id){
-        global $db;
-        $stmt = $db->prepare('DELETE FROM tags WHERE tag_id = :tag_id');
-        $stmt->bindValue(':tag_id', $tag_id);
-        $stmt->execute();
-    }
-
 }
