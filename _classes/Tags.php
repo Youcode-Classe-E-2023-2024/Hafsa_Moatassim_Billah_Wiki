@@ -48,7 +48,7 @@ class Tags
     // }
 
 
-    public function delete($tag_id){
+    static public function deleteTag($tag_id){
         global $db;
         $stmt = $db->prepare('DELETE FROM tags WHERE tag_id = :tag_id');
         $stmt->bindValue(':tag_id', $tag_id);
