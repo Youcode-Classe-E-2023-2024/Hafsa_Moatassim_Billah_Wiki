@@ -4,11 +4,12 @@ class Tags
 {
     public $tag_id;
     public $tag;
+    public $id;
+    public $name;
 
-
-    public function __construct()
+    public function __construct($id)
     {
-
+      
     }
 
     static function create($tag){
@@ -26,26 +27,52 @@ class Tags
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    static public function deleteTag($tag_id){
-        global $db;
-        $stmt = $db->prepare('DELETE FROM tags WHERE tag_id = :tag_id');
-        $stmt->bindValue(':tag_id', $tag_id);
-        $stmt->execute();
+    static function getTagById($tagId): ?array
+    {
+    global $db;
+    $query = "SELECT * FROM tags WHERE id = :id";
+    $stm = $db->prepare($query);
+    $stm->bindValue(':id', $tagId, PDO::PARAM_INT);
+    $exe = $stm->execute();
+
+    if ($exe) {
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        return $result !== false ? $result : null;
+    } else {
+        return null;
+    }
     }
 
+    static function deleteTag($id) : bool
+    {
+        global $db;
+        $query = "delete from tags WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
+
+        return $stm->execute();
+    }
+
+    static function updateTag($id, $newName) : bool
+    {
+        global $db;
+        $query = "UPDATE tags SET name = :newName WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
+        $stm->bindValue(':newName', $newName, PDO::PARAM_STR);
+
+        return $stm->execute();
+    }
     
-    // public function edit($tag_id, $tag){
-    //     $this->getTags();
-    //     foreach ($tags as $tag) {
-    //             $tag = $tag['tag'];
-    //     }
+    // function UpdateTag(): bool
+    // {
+    //     global $db;
+    //     $query = "UPDATE tags SET name = :name WHERE id = :id";
+    //     $stm = $db->prepare($query);
+    //     $stm->bindValue(':name', $this->name, PDO::PARAM_STR);
+    //     $stm->bindValue(':id', $this->id, PDO::PARAM_INT);
 
-    //     $this->query("UPDATE tags 
-    //                         SET tag = :tag, 
-    //                         WHERE tag_id = :tag_id");
-    //     $this->bind(':tag', tag_id);
-    //     $this->bind(':tag_id', $tag_id);
-
-    //     $this->execute();
+    //     return $stm->execute();
     // }
 }
