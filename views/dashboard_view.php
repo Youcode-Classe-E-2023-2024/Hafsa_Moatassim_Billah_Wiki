@@ -74,7 +74,7 @@ if($id->role !== 'admin'){
             </nav>
 
             <a name="logout" class="block text-gray-500 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-cyan-300 hover:text-white mt-auto" 
-            href="#">
+            href="index.php?page=home&logout=true">
                 <i class="fas fa-sign-out-alt mr-2"></i>Logout
             </a>
         </div>
@@ -207,11 +207,11 @@ if($id->role !== 'admin'){
 
                                 <td> 
                                     
-                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
-                                    <a>UPDATE</a>  
+                                    <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
+                                        <a href="index.php?page=update&tag_id=<?= $tag['id'] ?>">UPDATE</a>  
                                     </button>
-                                    <button id="deleteButton" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
-                                    <a href="index.php?page=delete&tagdelete_id=<?= $tag['id'] ?>">DELETE</a> 
+                                    <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white" onclick="confirmDelete(<?= $tag['id'] ?>)">
+                                        <a href="#">DELETE</a> 
                                     </button>
                                     
                                 </td>
@@ -248,12 +248,11 @@ if($id->role !== 'admin'){
                                 <td class="py-2 px-4 border-b border-grey-light"><?= $cat['name'] ?></td>
                                 <td> 
                                     
-                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white 
-                                    data-article-id=<?= $cat['id'] ?>">
-                                    UPDATE 
+                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
+                                    <a href="index.php?page=update&cat_id=<?= $cat['id'] ?>">UPDATE</a> 
                                     </button>
-                                    <button id="deleteButtonCat" name="deleteButton" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
-                                    <a href="index.php?page=delete&catdelete_id=<?= $cat['id'] ?>">DELETE</a> 
+                                     <button class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white" onclick="confirmDelete(<?= $cat['id'] ?>)">
+                                       <a href="#">DELETE</a> 
                                     </button>
                                     
                                 </td>
@@ -383,6 +382,21 @@ if($id->role !== 'admin'){
         sideNav.classList.toggle('hidden'); 
     });
 
+    // ****************************************************** Alert
+
+    
+    function confirmDelete(tagId) {
+        if (confirm("Are you sure you want to delete this tag?")) {
+            window.location.href = "index.php?page=delete&tagdelete_id=" + tagId;
+        }
+    }
+
+    function confirmDelete(catId) {
+        if (confirm("Are you sure you want to delete this category?")) {
+            window.location.href = "index.php?page=delete&catdelete_id=" + catId;
+        }
+    }
+    
 
     // ******************************************************
 
