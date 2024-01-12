@@ -35,7 +35,12 @@ class Wiki
     {
         global $db;
         
-        $result = $db->query("SELECT * FROM articles WHERE status = 'published' ORDER BY create_at DESC");
+        $result = $db->query("SELECT articles.*, users.firstname
+        FROM articles
+        JOIN users ON articles.id_user = users.id
+        WHERE articles.status = 'published'
+        ORDER BY create_at DESC;
+        ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
