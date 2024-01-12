@@ -2,6 +2,8 @@
 
 Le système Wiki est une plateforme robuste de gestion de contenu conçue pour offrir une expérience utilisateur exceptionnelle. Cette solution complète comprend à la fois une interface d'administration (back office) pour les administrateurs et une interface utilisateur (front office) permettant aux utilisateurs de créer, trouver et partager des wikis de manière facile et intéressante.
 
+![Capture d'écran - Exemple d'utilisation](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/1a36eb5a-8d68-48f7-a614-e7e6d08f19e8)
+
 ### Fonctionnalités Clés
 
 #### Back Office
@@ -29,8 +31,6 @@ Le système Wiki est une plateforme robuste de gestion de contenu conçue pour o
 **Page d'Accueil du Tableau de Bord**
 
 - Consulter les statistiques des entités via la page d'accueil du tableau de bord.
-
-![Capture d'écran - Exemple d'utilisation](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/1a36eb5a-8d68-48f7-a614-e7e6d08f19e8)
 
 #### Front Office
 
@@ -68,7 +68,7 @@ Le système Wiki est une plateforme robuste de gestion de contenu conçue pour o
 
 **Base de Données**
 
-- Pilote PDO
+- PDO
 
 ### Mise en Route
 
