@@ -4,7 +4,13 @@
 <div class="bg-indigo-50">
   <header>
     <h1 class="bg-white py-4 text-center">
-      <a href="#" class="text-xl font-bold text-gray-700 cursor-pointer">Discover, Learn, and Share with Wiki</a>
+    <!-- component -->
+    <div class="relative mr-6">
+      <input type="search" class="bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name...">
+      <div class="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
+      </div>
+    </div> 
+    <!-- <a href="#" class="text-xl font-bold text-gray-700 cursor-pointer">Discover, Learn, and Share with Wiki</a> -->
     </h1>
   </header>
   <section class="min-h-screen body-font text-gray-600">
