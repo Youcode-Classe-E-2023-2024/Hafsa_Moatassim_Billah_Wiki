@@ -56,13 +56,6 @@ class Wiki
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // static function getTheLatestWiki(): array
-    // {
-    //     global $db;
-        
-    //     $result = $db->query("SELECT * FROM articles ORDER BY create_at DESC LIMIT 5");
-    //     return $result->fetchAll(PDO::FETCH_ASSOC);
-    // }
 
     // ************************************************** GET ARTICLE BY ID
 
