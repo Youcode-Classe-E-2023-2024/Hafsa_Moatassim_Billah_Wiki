@@ -11,7 +11,8 @@ if(isset($_POST['reset-request-submit'])){
     $userEmail = $_POST['email'];
     
     $checkEmailQuery = "SELECT * FROM users WHERE email = ?";
-    $stmt = mysqli_stmt_init($db);
+    $db_sqli = mysqli_connect('localhost', 'root', '', 'wiki');
+    $stmt = mysqli_stmt_init($db_sqli);
 
     if(!mysqli_stmt_prepare($stmt, $checkEmailQuery)){
         echo "there was an error";
@@ -25,7 +26,7 @@ if(isset($_POST['reset-request-submit'])){
 
         //delete existing reset requests for this email
         $deleteQuery = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
-        $stmt = mysqli_stmt_init($db);
+        $stmt = mysqli_stmt_init($db_sqli);
 
             if(!mysqli_stmt_prepare($stmt,$deleteQuery)){
                 echo "there was an error";
@@ -37,7 +38,7 @@ if(isset($_POST['reset-request-submit'])){
 
         //inserting into table
         $insertQuery = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?, ?, ?, ?)";
-        $stmt = mysqli_stmt_init($db);
+        $stmt = mysqli_stmt_init($db_sqli);
 
             if(!mysqli_stmt_prepare($stmt,$insertQuery)){
                 echo "there was an error";

@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 
 class MailSender{    
     public function Send($email, $url){
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer(false);
 
         try {
             //Server settings
@@ -32,7 +32,8 @@ class MailSender{
             The link to reset your password is below if you did not make this request, you can ignore this email. \n
             <p>Here is your password reset link: </br>
             <a href="' . $url . '">' . $url . '</a>';
-
+            $mail->Debugoutput = null;
+            $mail->SMTPDebug = 0;
             $mail->send();
             // echo 'Message has been sent';
         } catch (Exception $e) {
