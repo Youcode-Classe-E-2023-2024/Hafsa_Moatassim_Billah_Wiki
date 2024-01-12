@@ -1,5 +1,5 @@
 <?php 
-        $id = $_SESSION['c'];
+        $id = $_SESSION['id'];
         $ID = $_GET['id'];
         $wiki = Wiki::getArticleById($ID);
 ?>
