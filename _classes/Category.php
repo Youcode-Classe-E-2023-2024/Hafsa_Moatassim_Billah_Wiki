@@ -26,27 +26,41 @@ class Category
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    static function getCatById($catId): ?array
+    {
+    global $db;
+    $query = "SELECT * FROM categories WHERE id = :id";
+    $stm = $db->prepare($query);
+    $stm->bindValue(':id', $catId, PDO::PARAM_INT);
+    $exe = $stm->execute();
 
-    static public function deleteCat($tag_id){
-        global $db;
-        $stmt = $db->prepare('DELETE FROM categories WHERE cat_id = :cat_id');
-        $stmt->bindValue(':tag_id', $tag_id);
-        $stmt->execute();
+    if ($exe) {
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        return $result !== false ? $result : null;
+    } else {
+        return null;
+    }
     }
     
-        // public function edit($tag_id, $tag){
-    //     $this->getTags();
-    //     foreach ($tags as $tag) {
-    //             $tag = $tag['tag'];
-    //     }
+    static function deleteCat($id) : bool
+    {
+        global $db;
+        $query = "delete from categories WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
 
-    //     $this->query("UPDATE tags 
-    //                         SET tag = :tag, 
-    //                         WHERE tag_id = :tag_id");
-    //     $this->bind(':tag', tag_id);
-    //     $this->bind(':tag_id', $tag_id);
+        return $stm->execute();
+    }
 
-    //     $this->execute();
-    // }
+    static function updateCat($id, $newName) : bool
+    {
+        global $db;
+        $query = "UPDATE categories SET name = :newName WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
+        $stm->bindValue(':newName', $newName, PDO::PARAM_STR);
 
+        return $stm->execute();
+    }
 }
