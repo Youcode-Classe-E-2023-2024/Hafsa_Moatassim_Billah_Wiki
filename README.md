@@ -27,6 +27,8 @@ Page d'Accueil du Tableau de Bord
 
     Consulter les statistiques des entités via la page d'accueil du tableau de bord.
 
+![uml_wiki](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/2fd3e206-76be-4260-a261-bf2460c96789)
+
 Front Office
 Connexion et Inscription
 
@@ -65,7 +67,7 @@ Base de Données
 
 Mise en Route
 
-    Clonez le dépôt.
+    Clonez le dépôt. https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki.git
     Configurez la base de données à l'aide des scripts SQL fournis.
     Configurez le backend PHP.
     Lancez l'application.
