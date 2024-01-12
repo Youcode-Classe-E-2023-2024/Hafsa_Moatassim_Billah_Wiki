@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
     if ($User !== false){
         
         $_SESSION['c'] = $User['id'];
-        $_SESSION['x'] = 'logout';
+        // $_SESSION['x'] = 'logout';
        
         exit(); 
     } else {
@@ -16,11 +16,11 @@ if(isset($_POST['submit'])){
     }
 }
 
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('location: index.php?page=home');
-    exit(); 
-}
+// if (isset($_GET['logout'])) {
+//     session_destroy();
+//     header('location: index.php?page=home');
+//     exit(); 
+// }
 
 
 
