@@ -30,30 +30,31 @@ if (isset($_GET['softdelete_id'])) {
 
 // Delete Tag
 
-// if (isset($_GET['tagdelete_id'])) {
-//     $tagIdToDelete = $_GET['tagdelete_id'];
+if (isset($_GET['tagdelete_id'])) {
+    $tagIdToDelete = $_GET['tagdelete_id'];
     
-//     $deleted = Tags::deleteTag($tagIdToDelete);
+    $deleted = Tags::deleteTag($tagIdToDelete);
 
-//     if ($deleted) {
-//         header('location:index.php?page=dashboard');
-//     } else {
-//         echo "Error deleting tag.";
-//     }
-// }
+    if ($deleted) {
+        header('location:index.php?page=dashboard');
+    } else {
+        // echo "Error deleting tag.";
+    }
+}
 
-// // Delete Category
+// Delete Category
 
-// if (isset($_GET['catdelete_id'])) {
-//     $catIdToDelete = $_GET['catdelete_id'];
+if (isset($_GET['catdelete_id'])) {
+    $catIdToDelete = $_GET['catdelete_id'];
     
-//     $deleted = Category::deleteCat($catIdToDelete);
+    $deleted = Category::deleteCat($catIdToDelete);
 
-//     if ($deleted) {
-//         header('location:index.php?page=dashboard');
-//     } else {
-//         echo "Error deleting category.";
-//     }
-// }
+    if ($deleted) {
+        header('location:index.php?page=dashboard');
+    } else {
+        // echo "Error deleting category.";
+    }
+}
+
 
 ?>

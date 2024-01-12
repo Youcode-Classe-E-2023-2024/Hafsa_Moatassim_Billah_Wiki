@@ -1,5 +1,5 @@
 <?php 
-if (!isset($_SESSION['x'])) {
+if (!isset($_SESSION['id'])) {
     header("location: index.php?page=login");
 }
 
