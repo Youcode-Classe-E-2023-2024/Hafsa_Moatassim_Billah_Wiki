@@ -56,5 +56,24 @@ if (isset($_GET['catdelete_id'])) {
     }
 }
 
+// if (isset($_GET['article_delete_id'])) {
+//     $articleIdToDelete = $_GET['article_delete_id'];
+
+//     $article = Wiki::getArticleById($articleIdToDelete);
+//     $userId = $_SESSION['id'];
+//     $isAdmin = User::getAdmin($userId);
+
+//     if ($article['user_id'] == $userId || $isAdmin) {
+
+//         $deleted = Wiki::softDeleteArticle($articleIdToDelete);
+
+//         if ($deleted) {
+//             header('location:index.php?page=dashboard');
+//         } else {
+//         }
+//     } else {
+//         header('location:unauthorized.php');
+//     }
+// }
 
 ?>
