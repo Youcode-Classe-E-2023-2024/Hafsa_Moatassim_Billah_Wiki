@@ -1,10 +1,4 @@
 <?php
-// if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-//     header("location: index.php?page=home");
-//     exit(); 
-// }
-
-// $adminData = User::getAdmin();
 
 $id = new User($_SESSION['id']);
 if($id->role !== 'admin'){
@@ -25,6 +19,7 @@ if($id->role !== 'admin'){
             .section-small {
                 width: 50%;
             }
+             
         }
     </style>
 </head>
@@ -162,7 +157,6 @@ if($id->role !== 'admin'){
                             <?php
                                 $id = $_SESSION['id'];
                                 $wiki = Wiki::getTheLatestWiki($id);
-                                // dd($wiki);
                                 foreach ($wiki as $article) {?>
 
                             <tr class="hover:bg-grey-lighter text-gray-700">

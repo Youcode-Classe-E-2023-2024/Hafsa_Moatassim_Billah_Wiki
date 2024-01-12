@@ -2,6 +2,7 @@
         $id = $_SESSION['id'];
         $ID = $_GET['id'];
         $wiki = Wiki::getArticleById($ID);
+        
 ?>
 
 <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -21,9 +22,10 @@
       <div>
         <div class="pl-12">
           <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
-          <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
           <p class="mb-4 font-semibold text text-black"><?= date('F j, Y', strtotime($wiki['create_at'])) ?></p>
           <p class="peer mb-6 text-black"><?= $wiki['content'] ?></p>
+          <a href="index.php?page=update&id=<?= $ID ?>" class="text-blue-500 hover:underline">Update Article</a>
+          <a href="index.php?page=delete&id=<?= $ID ?>" class="text-red-500 hover:underline">Delete Article</a>
         </div>
       </div>
     </div>
