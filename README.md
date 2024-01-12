@@ -1,79 +1,82 @@
-##Système de Gestion de Contenu Wiki
+## Système de Gestion de Contenu Wiki
 
-Wiki est un système de gestion de contenu robuste conçu pour offrir une expérience utilisateur exceptionnelle. Le système comprend à la fois un back office pour les administrateurs et un front office pour permettre aux utilisateurs de créer, trouver et partager des wikis de manière facile et intéressante.
-Fonctionnalités Clés
-Back Office
-Gestion des Catégories (Admin)
+Le système Wiki est une plateforme robuste de gestion de contenu conçue pour offrir une expérience utilisateur exceptionnelle. Cette solution complète comprend à la fois une interface d'administration (back office) pour les administrateurs et une interface utilisateur (front office) permettant aux utilisateurs de créer, trouver et partager des wikis de manière facile et intéressante.
 
-    Créer, éditer et supprimer des catégories pour organiser le contenu.
-    Associer plusieurs wikis à une catégorie.
+### Fonctionnalités Clés
 
-Gestion des Tags (Admin)
+#### Back Office
 
-    Créer, éditer et supprimer des tags pour une recherche de contenu efficace et un regroupement.
-    Associer des tags aux wikis pour une navigation précise.
+**Gestion des Catégories (Admin)**
 
-Inscription des Auteurs
+- Créer, éditer et supprimer des catégories pour organiser le contenu.
+- Associer plusieurs wikis à une catégorie.
 
-    Les auteurs peuvent s'inscrire sur la plateforme en fournissant des informations de base telles que le nom, l'e-mail et un mot de passe sécurisé.
+**Gestion des Tags (Admin)**
 
-Gestion des Wikis (Auteurs et Admins)
+- Créer, éditer et supprimer des tags pour une recherche de contenu efficace et un regroupement.
+- Associer des tags aux wikis pour une navigation précise.
 
-    Les auteurs peuvent créer, éditer et supprimer leurs propres wikis.
-    Les auteurs peuvent associer une seule catégorie et plusieurs tags à leurs wikis pour l'organisation et la recherche.
-    Les admins peuvent archiver les wikis inappropriés pour maintenir un environnement sûr et pertinent.
+**Inscription des Auteurs**
 
-Page d'Accueil du Tableau de Bord
+- Les auteurs peuvent s'inscrire sur la plateforme en fournissant des informations de base telles que le nom, l'e-mail et un mot de passe sécurisé.
 
-    Consulter les statistiques des entités via la page d'accueil du tableau de bord.
+**Gestion des Wikis (Auteurs et Admins)**
 
-![use_case](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/1a36eb5a-8d68-48f7-a614-e7e6d08f19e8)
+- Les auteurs peuvent créer, éditer et supprimer leurs propres wikis.
+- Les auteurs peuvent associer une seule catégorie et plusieurs tags à leurs wikis pour l'organisation et la recherche.
+- Les admins peuvent archiver les wikis inappropriés pour maintenir un environnement sûr et pertinent.
 
+**Page d'Accueil du Tableau de Bord**
 
-Front Office
-Connexion et Inscription
+- Consulter les statistiques des entités via la page d'accueil du tableau de bord.
 
-    Les utilisateurs peuvent créer un compte (Inscription) et se connecter (Connexion) à des comptes existants. Les utilisateurs admin seront redirigés vers la page du tableau de bord, tandis que les autres seront redirigés vers la page d'accueil.
+![Capture d'écran - Exemple d'utilisation](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/1a36eb5a-8d68-48f7-a614-e7e6d08f19e8)
 
-Barre de Recherche
+#### Front Office
 
-    Une barre de recherche est disponible pour permettre aux visiteurs de rechercher des wikis, des catégories et des tags sans rafraîchissement de la page (utilisation d'AJAX).
+**Connexion et Inscription**
 
-Affichage des Derniers Wikis
+- Les utilisateurs peuvent créer un compte (inscription) et se connecter (connexion) à des comptes existants. Les utilisateurs admin seront redirigés vers la page du tableau de bord, tandis que les autres seront redirigés vers la page d'accueil.
 
-    La page d'accueil ou une section dédiée affiche les derniers wikis ajoutés à la plateforme, offrant ainsi aux utilisateurs un accès rapide au contenu le plus récent.
+**Barre de Recherche**
 
-Affichage des Dernières Catégories
+- Une barre de recherche est disponible pour permettre aux visiteurs de rechercher des wikis, des catégories et des tags sans rafraîchissement de la page (utilisation d'AJAX).
 
-    Une section distincte présente les dernières catégories créées ou mises à jour, permettant aux utilisateurs de découvrir rapidement les thèmes récemment ajoutés à la plateforme.
+**Affichage des Derniers Wikis**
 
-Redirection vers la Page Unique des Wikis
+- La page d'accueil ou une section dédiée affiche les derniers wikis ajoutés à la plateforme, offrant ainsi aux utilisateurs un accès rapide au contenu le plus récent.
 
-    En cliquant sur un wiki, les utilisateurs sont redirigés vers une page unique dédiée à ce wiki, offrant des détails complets tels que le contenu, les catégories associées, les tags et les informations sur l'auteur.
+**Affichage des Dernières Catégories**
 
-Technologies Utilisées
-Frontend
+- Une section distincte présente les dernières catégories créées ou mises à jour, permettant aux utilisateurs de découvrir rapidement les thèmes récemment ajoutés à la plateforme.
 
-    HTML5
-    Framework CSS
-    JavaScript
+**Redirection vers la Page Unique des Wikis**
 
-Backend
+- En cliquant sur un wiki, les utilisateurs sont redirigés vers une page unique dédiée à ce wiki, offrant des détails complets tels que le contenu, les catégories associées, les tags et les informations sur l'auteur.
 
-    PHP 8 avec une architecture MVC
+### Technologies Utilisées
 
-Base de Données
+**Frontend**
 
-    Pilote PDO
+- HTML5
+- Framework CSS
+- JavaScript
 
-Mise en Route
+**Backend**
 
-    Clonez le dépôt. https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki.git
-    Configurez la base de données à l'aide des scripts SQL fournis.
-    Configurez le backend PHP.
-    Lancez l'application.
+- PHP 8 avec une architecture MVC
 
-Contributeurs
+**Base de Données**
 
-    Hafsa
+- Pilote PDO
 
+### Mise en Route
+
+1. Clonez le dépôt. [https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki.git](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki.git)
+2. Configurez la base de données à l'aide des scripts SQL fournis.
+3. Configurez le backend PHP.
+4. Lancez l'application.
+
+### Contributeurs
+
+- Hafsa
