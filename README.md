@@ -1,4 +1,4 @@
-#Système de Gestion de Contenu Wiki
+##Système de Gestion de Contenu Wiki
 
 Wiki est un système de gestion de contenu robuste conçu pour offrir une expérience utilisateur exceptionnelle. Le système comprend à la fois un back office pour les administrateurs et un front office pour permettre aux utilisateurs de créer, trouver et partager des wikis de manière facile et intéressante.
 Fonctionnalités Clés
@@ -27,7 +27,8 @@ Page d'Accueil du Tableau de Bord
 
     Consulter les statistiques des entités via la page d'accueil du tableau de bord.
 
-![uml_wiki](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/2fd3e206-76be-4260-a261-bf2460c96789)
+![use_case](https://github.com/Youcode-Classe-E-2023-2024/Hafsa_Moatassim_Billah_Wiki/assets/93940843/1a36eb5a-8d68-48f7-a614-e7e6d08f19e8)
+
 
 Front Office
 Connexion et Inscription
