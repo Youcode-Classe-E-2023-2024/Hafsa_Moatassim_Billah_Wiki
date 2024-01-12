@@ -26,7 +26,7 @@ class User
             $this->username = $user['firstname'];
             $this->username = $user['lastname'];
             $this->password = $user['password'];
-            $this->image = $user['pp'];
+            $this->image = $user['file'];
             $this->role = $user['role'];
         }
     }
@@ -112,7 +112,8 @@ class User
         $exe = $stm->execute();
 
         if ($exe) {
-            return $stm->fetch(PDO::FETCH_ASSOC);
+             $user = $stm->fetch(PDO::FETCH_ASSOC);
+             return $user;
         } else {
             return false;
         }
@@ -139,16 +140,28 @@ class User
     static function login($email, $password)
     {
         $user = self::checkIfUserExist($email);
-    
-        if ($user !== false) {
-            if (password_verify($password, $user['password'])) {
-                if ($user['role'] == 'admin') {
-                    header('Location: dashboard.php');
-                    exit();
-                } else {
-                    header('Location: index.php?page=wiki');
-                }
+        if ($user) {
+        $hashedPasswordFromDatabase = $user['password'];
+
+            if (password_verify($password, $hashedPasswordFromDatabase)) {
+                return [
+                    'id' => $user['id'],              
+                    'firstname' => $user['firstname'],
+                    'lastname' => $user['lastname'],
+                    'email' => $user['email'],
+                    'file' => $user['file'],
+                    'role' => $user['role']
+                ];
+
+            if($user['role']==='author')
+            {
+                header('Location: index.php?page=wiki');
+
+            }
+                
             } else {
+                header('Location: index.php?page=login');
+
                 return false;
             }
         } else {
