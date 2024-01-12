@@ -1,6 +1,4 @@
 
-
-
 <div class="bg-indigo-50">
   <header>
     <h1 class="bg-white py-4 text-center">

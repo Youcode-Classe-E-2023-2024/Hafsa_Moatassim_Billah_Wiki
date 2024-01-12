@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($_SESSION['id'])){
+    header("location:index.php?page=login");
+}
+?>
 
     <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Wiki</div>
     <style>

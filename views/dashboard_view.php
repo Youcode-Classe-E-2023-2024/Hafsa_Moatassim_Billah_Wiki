@@ -4,7 +4,13 @@
 //     exit(); 
 // }
 
-$adminData = User::getAdmin();
+// $adminData = User::getAdmin();
+
+$id = new User($_SESSION['id']);
+if($id->role !== 'admin'){
+    header('location: index.php?page=home');
+}
+
 ?>
 
 <head>
@@ -28,7 +34,7 @@ $adminData = User::getAdmin();
         <div class="p-2 bg-white w-60 flex flex-col hidden md:flex" id="sideNav">
             <nav>
             <?php
-                $id = $_SESSION['c'];
+                $id = $_SESSION['id'];
                 $Admins = User::getAdmin($id);
                         
             foreach ($Admins as $Admin) {?>
@@ -114,7 +120,7 @@ $adminData = User::getAdmin();
                         </thead>
 
                         <?php
-                            $id = $_SESSION['c'];
+                            $id = $_SESSION['id'];
                             $users = User::getAll($id);
                             
                         foreach ($users as $user) {?>
@@ -154,7 +160,7 @@ $adminData = User::getAdmin();
 
                         <tbody>
                             <?php
-                                $id = $_SESSION['c'];
+                                $id = $_SESSION['id'];
                                 $wiki = Wiki::getTheLatestWiki($id);
                                 // dd($wiki);
                                 foreach ($wiki as $article) {?>
@@ -192,7 +198,7 @@ $adminData = User::getAdmin();
 
                         <tbody>
                             <?php
-                                $id = $_SESSION['c'];
+                                $id = $_SESSION['id'];
                                 $tags = Tags::getAllTags($id);
                                 foreach ($tags as $tag) {?>
                         
@@ -234,7 +240,7 @@ $adminData = User::getAdmin();
 
                         <tbody>
                             <?php
-                                $id = $_SESSION['c'];
+                                $id = $_SESSION['id'];
                                 $cats = Category::getAllCats();
                                 foreach ($cats as $cat) {?>
                         
