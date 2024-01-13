@@ -21,7 +21,7 @@ if(!isset($_SESSION['id'])){
               $tags = Tags::getAllTags();
               foreach($tags as $tag) {
               ?>
-              <option value=""><?= $tag['name']?></option>
+              <option value="" name = <?= $tag['id']?>><?= $tag['name']?></option>
             <?php } ?>
             </select>
     </div>

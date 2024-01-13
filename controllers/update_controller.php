@@ -3,7 +3,7 @@
 if (isset($_GET['tag_id'])) {
     $tagId = $_GET['tag_id'];
 
-    $tag = Tags::getTagById($tagId); 
+    $tag = Tags::getTagById($ID); 
 
     if (!$tag) {
         echo "Tag not found.";
