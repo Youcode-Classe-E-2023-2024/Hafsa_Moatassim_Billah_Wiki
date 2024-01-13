@@ -1,38 +1,47 @@
 
-<div class="bg-indigo-50">
+<!-- component -->
   <header>
-    <h1 class="bg-white py-4 text-center">
-    <!-- component -->
-    <div class="relative mr-6">
-      <input type="search" class="bg-purple-white shadow rounded border-0 p-3" placeholder="Search by name...">
-      <div class="absolute pin-r pin-t mt-3 mr-4 text-purple-lighter">
-      </div>
-    </div> 
-    </h1>
-  </header>
-  <section class="min-h-screen body-font text-gray-600">
-    <div class="container mx-auto px-5 py-10">
-      <div class="-m-4 flex flex-wrap">
-        
-        <?php 
-        // $id = $_SESSION['c'];
-        $wiki = Wiki::getAllarticles();
-        foreach($wiki as $article){ ?>
-
-        <div class="w-1/4 p-4">
-          <a href="index.php?page=contentwiki&id=<?= $article['id'] ?>" class="relative block h-48 overflow-hidden rounded">
-            <img class="block h-full w-full object-cover object-center cursor-pointer" src="assets/image/<?= $article['file'] ?>" />
-          </a>
-          <div class="mt-4">
-            <h3 class="title-font mb-1 text-xs tracking-widest text-gray-500"><?= $article['firstname'] ?></h3>
-            <h2 class="title-font text-lg font-medium text-gray-900"><?= $article['title'] ?></h2>
-            <p class="mt-1"><?= date('F j, Y', strtotime($article['create_at'])) ?></p>
+    <nav class="p-6">
+          <div class="flex items-center max-w-md mx-auto bg-white rounded-lg " x-data="{ search: '' }">
+              <div class="w-full">
+                  <input type="search" class="w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none"
+                      placeholder="search" x-model="search">
+              </div>
           </div>
-        </div>
+    </nav>
 
-        <?php }?>
-  
+    <!-- Section banner -->
+    <div class="container mx-auto bg-gray-400 h-96 rounded-md flex items-center" style="background-image: url('https://images.pexels.com/photos/19770764/pexels-photo-19770764/free-photo-of-paysage-soleil-couchant-voler-rochers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+      <div class="sm:ml-20 text-gray-50 text-center sm:text-left">
+        <h1 class="text-5xl font-bold mb-4">
+          Explore Our Wikies
+        </h1>
+        <p class="text-lg inline-block sm:block">The largest online community to share wikies.</p>
+        <button class="mt-8 px-4 py-2 bg-gray-400 rounded"><a href="indes.php?page=addwiki">Add Wiki</a></button>
       </div>
     </div>
-  </section>
-</div>
+
+  </header>
+  <main class="py-16 container mx-auto px-6 md:px-0">
+
+<section>
+  <h1 class="text-xl font-bold text-gray-950 mb-10">Explore Our Wikies</h1>
+  <div class="grid sm:grid-cols-3 gap-4 grid-cols-2">
+    <?php 
+      $id = $_SESSION['id'];
+      $wiki = Wiki::getAllarticles();
+      foreach($wiki as $article){ ?>
+
+        <div>
+          <div class="bg-gray-300 h-44">
+            <img src="assets/image/<?= $article['file'] ?>" alt="<?= $article['title'] ?>" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="text-lg font-bold text-gray-800 mt-2"><?= $article['title'] ?></h3>
+          <p class="font-semibold text-gray-500 mt-2"><?= $article['firstname'] ?></p>
+          <p class="font-regular text-gray-500 mt-2"><?= date('F j, Y', strtotime($article['create_at'])) ?></p>
+        </div>
+
+    <?php }?>
+  </div>
+  <hr class="w-40 my-14 border-4 rounded-md sm:mx-0 mx-auto" />
+</section>
