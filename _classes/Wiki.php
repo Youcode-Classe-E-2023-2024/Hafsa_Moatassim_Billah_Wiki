@@ -61,6 +61,18 @@ class Wiki
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // ************************************************** Count the articles
+
+    static function countAllArticles(): int
+    {
+        global $db;
+
+        $query = "SELECT COUNT(*) FROM articles WHERE status = 'published'";
+        $result = $db->query($query);
+
+        return $result->fetchColumn();
+    }
+
 
     // ************************************************** GET ARTICLE BY ID
 
