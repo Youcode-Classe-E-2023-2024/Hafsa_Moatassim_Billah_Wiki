@@ -3,20 +3,16 @@ if(!isset($_SESSION['id'])){
     header("location:index.php?page=login");
 }
 ?>
-
-    <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Wiki</div>
-    <style>
-      body {background: #eef2ff !important;}
-    </style>
+<div class='flex items-center justify-center min-h-screen from-cyan-100 via-red-200 to-green-200 bg-gradient-to-br'>
 
 <form action="index.php?page=addwiki" method="post" class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl" enctype="multipart/form-data">
+    <div class="heading text-center font-bold text-2xl text-gray-800">New Wiki</div>
         <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"  placeholder="Title" name="title" type="text">
         <textarea class="description bg-gray-100 sec p-3 h-30 border border-gray-300 outline-none"  name="content" placeholder="Describe everything about this post here"></textarea>
 
-    <div class="m-3">
-      
-            <select class="z-2 mt-1 w-full rounded bg-blue-200 ring-1 ring-gray-300" name="tags[]" required multiple>
-              <option value="" disabled selected class="bg-blue-100">Select Tags</option>
+    <div class="m-3">  
+            <select class="z-2 mt-1 w-full rounded bg-blue-10 ring-1 ring-gray-300" name="tags[]" required multiple>
+              <option value="" disabled selected class="bg-blue-12">Select Tags</option>
               <?php 
               $tags = Tags::getAllTags();
               foreach($tags as $tag) {
@@ -27,7 +23,7 @@ if(!isset($_SESSION['id'])){
     </div>
 
     <div class="m-3">
-            <select class="z-2 mt-1 w-full rounded bg-blue-100 ring-1 ring-gray-300"  name="category" required>
+            <select class="z-2 mt-1 w-full rounded bg-blue-10 ring-1 ring-gray-300"  name="category" required>
               <option value="" disabled selected>Select a category</option>
               <?php 
               $cats = Category::getAllCats();
@@ -54,3 +50,4 @@ if(!isset($_SESSION['id'])){
           <button class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-blue-700" name="submit">Post</button>
         </div>
 </form>
+</div>
