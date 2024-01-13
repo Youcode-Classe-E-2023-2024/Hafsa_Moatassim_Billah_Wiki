@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 class Tags
 {
@@ -27,22 +27,23 @@ class Tags
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    static function getTagById($tagId): ?array
+    static function getTagById($ID): ?array
     {
-    global $db;
-    $query = "SELECT * FROM tags WHERE id = :id";
-    $stm = $db->prepare($query);
-    $stm->bindValue(':id', $tagId, PDO::PARAM_INT);
-    $exe = $stm->execute();
-
-    if ($exe) {
-        $result = $stm->fetch(PDO::FETCH_ASSOC);
-
-        return $result !== false ? $result : null;
-    } else {
-        return null;
+        global $db;
+        $query = "SELECT * FROM tags WHERE id IN (SELECT id_tag FROM articles_tags WHERE id_article = :id)";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $ID, PDO::PARAM_INT);
+        $exe = $stm->execute();
+    
+        if ($exe) {
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $result !== false ? $result : null;
+        } else {
+            return null;
+        }
     }
-    }
+    
 
     static function deleteTag($id) : bool
     {
