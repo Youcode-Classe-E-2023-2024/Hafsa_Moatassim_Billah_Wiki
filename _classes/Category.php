@@ -63,4 +63,17 @@ class Category
 
         return $stm->execute();
     }
+
+        // ************************************************** Count Category
+
+     static function countAllCat(): int
+     {
+         global $db;
+
+         $query = "SELECT COUNT(*) FROM categories";
+         $result = $db->query($query);
+
+         return $result->fetchColumn();
+     }
+    
 }
