@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 class Wiki
 {
@@ -11,7 +11,7 @@ class Wiki
 
     // ************************************************** NEW ARTICLE
 
-    static function NewWiki($title, $content, $file): bool
+    static function NewWiki($title, $content, $file, $category, $id_user): bool
     {
         global $db;
 
@@ -20,8 +20,8 @@ class Wiki
         $query = "INSERT INTO articles (title, content, file, id_user, id_category) VALUES (:title, :content, :file, :id_user, :id_category)";
         $stm = $db->prepare($query);
         $stm->bindValue(':title', $title, PDO::PARAM_STR);
-        $stm->bindValue(':id_user', $user_id, PDO::PARAM_INT);
-        $stm->bindValue(':id_category', $category_id, PDO::PARAM_INT);
+        $stm->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+        $stm->bindValue(':id_category', $category, PDO::PARAM_INT);
         $stm->bindValue(':content', $content, PDO::PARAM_STR);
         $stm->bindValue(':file', $file, PDO::PARAM_STR);
         $stm->execute();
