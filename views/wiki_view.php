@@ -1,6 +1,5 @@
 
-<!-- component -->
-  <header>
+<header>
     <nav class="p-6">
           <div class="flex items-center max-w-md mx-auto bg-white rounded-lg " x-data="{ search: '' }">
               <div class="w-full">
@@ -27,14 +26,15 @@
 <section>
   <h1 class="text-xl font-bold text-gray-950 mb-10">Explore Our Wikies</h1>
   <div class="grid sm:grid-cols-3 gap-4 grid-cols-2">
+
     <?php 
-      $id = $_SESSION['id'];
+      // $id = $_SESSION['id'];
       $wiki = Wiki::getAllarticles();
       foreach($wiki as $article){ ?>
 
         <div>
           <div class="bg-gray-300 h-44">
-            <img src="assets/image/<?= $article['file'] ?>" alt="<?= $article['title'] ?>" class="w-full h-full object-cover" />
+            <a href="index.php?page=contentwiki&id=<?= $article['id'] ?>"><img src="assets/image/<?= $article['file'] ?>" alt="<?= $article['title'] ?>" class="w-full h-full object-cover" /></a>
           </div>
           <h3 class="text-lg font-bold text-gray-800 mt-2"><?= $article['title'] ?></h3>
           <p class="font-semibold text-gray-500 mt-2"><?= $article['firstname'] ?></p>
