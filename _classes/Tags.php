@@ -66,14 +66,15 @@ class Tags
         return $stm->execute();
     }
     
-    // function UpdateTag(): bool
-    // {
-    //     global $db;
-    //     $query = "UPDATE tags SET name = :name WHERE id = :id";
-    //     $stm = $db->prepare($query);
-    //     $stm->bindValue(':name', $this->name, PDO::PARAM_STR);
-    //     $stm->bindValue(':id', $this->id, PDO::PARAM_INT);
+     // ************************************************** Count Tags
 
-    //     return $stm->execute();
-    // }
+     static function countAllTag(): int
+     {
+         global $db;
+
+         $query = "SELECT COUNT(*) FROM tags";
+         $result = $db->query($query);
+
+         return $result->fetchColumn();
+     }
 }
