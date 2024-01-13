@@ -132,6 +132,18 @@ class User
         return $exe; 
     }
 
+    // ************************************************** Count Users
+
+    static function countAllUser(): int
+    {
+        global $db;
+
+        $query = "SELECT COUNT(*) FROM users WHERE role = 'author'";
+        $result = $db->query($query);
+
+        return $result->fetchColumn();
+    }
+
 
     // ************************************************** LOGIN
     /**
