@@ -17,7 +17,7 @@ if(!isset($_SESSION['id'])){
               $tags = Tags::getAllTags();
               foreach($tags as $tag) {
               ?>
-              <option value="" name = <?= $tag['id']?>><?= $tag['name']?></option>
+              <option value="<?= $tag['id']?>"><?= $tag['name']?></option>
             <?php } ?>
             </select>
     </div>
@@ -29,7 +29,7 @@ if(!isset($_SESSION['id'])){
               $cats = Category::getAllCats();
               foreach($cats as $cat) {
               ?>
-              <option value=""><?=$cat['name']?></option>
+              <option value="<?=$cat['id']?>"><?=$cat['name']?></option>
               <?php } ?>
             </select>
 
@@ -51,3 +51,57 @@ if(!isset($_SESSION['id'])){
         </div>
 </form>
 </div>
+
+<?php
+$userId = $_SESSION['id'];
+$userArticles = Wiki::getUserArticles($userId);
+
+if (!empty($userArticles)) {
+  foreach ($userArticles as $article) { 
+    echo'
+            <div class="flex-auto block py-8 pt-6 px-9">
+              <div class="overflow-x-auto">
+                <table class="w-full my-0 align-middle text-dark border-neutral-200">
+                  <thead class="align-bottom">
+                    <tr class="font-semibold text-[0.95rem] text-secondary-dark">
+                      <th class="pb-3 text-start min-w-[175px]">Image</th>
+                      <th class="pb-3 text-end min-w-[100px]">Title</th>
+                      <th class="pb-3 text-end min-w-[100px]">Created at</th>
+                      <th class="pb-3 text-end min-w-[100px]">Operation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-dashed last:border-b-0">
+                      <td class="p-3 pl-0">
+                        <div class="flex items-center">
+                          <div class="relative inline-block shrink-0 rounded-2xl me-3">
+                            <img src="assets/image/'.$article['file'].'" class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="">
+                          </div>
+                        </div>
+                      </td>
+                      <td class="p-3 pr-12 text-end">
+                        <span class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-warning bg-warning-light rounded-lg">'.$article['title'].'</span>
+                      </td>
+                      <td class="p-3 pr-12 text-end">
+                        <span class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-warning bg-warning-light rounded-lg">'.$article['create_at'].'</span>
+                       </td>
+                      <td class="p-3 pr-12 text-end">
+                        <button  name ="delete" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-red-400 border-red-500 text-white">
+                          <a href="index.php?page=delete&softdelete_id='.$article['id'].'">Delete</a>
+                        </button>
+                        <button  name ="delete" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
+                          <a href="index.php?page=delete&update_id='.$article['id'].'">Update</a>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>';
+
+  }
+}
