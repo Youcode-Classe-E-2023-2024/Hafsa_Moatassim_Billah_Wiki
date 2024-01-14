@@ -1,10 +1,3 @@
-<?php
-$id = new User($_SESSION['id']);
-if($id->role !== 'admin'){
-    header('location: index.php?page=home');
-}
-?>
-
 <!-- component -->
 <style>
   /* Compiled dark classes from Tailwind */
