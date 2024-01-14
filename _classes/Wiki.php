@@ -11,12 +11,10 @@ class Wiki
 
     // ************************************************** NEW ARTICLE
 
-    static function NewWiki($title, $content, $file, $category, $id_user): bool
+    static function NewWiki($title, $content, $file, $category, $id_user): int
     {
         global $db;
 
-        $user_id = 1;
-        $category_id = 4;
         $query = "INSERT INTO articles (title, content, file, id_user, id_category) VALUES (:title, :content, :file, :id_user, :id_category)";
         $stm = $db->prepare($query);
         $stm->bindValue(':title', $title, PDO::PARAM_STR);
@@ -26,8 +24,37 @@ class Wiki
         $stm->bindValue(':file', $file, PDO::PARAM_STR);
         $stm->execute();
 
-        return true;
+        return $db->lastInsertId();    
     }
+
+    // ************************************************** Users Articles
+
+    static function getUserArticles($userId) {
+        global $db;
+
+        $query = "SELECT * FROM articles WHERE id_user = :user_id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $stm->execute();
+
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // ************************************************** Insert to artciles_tag
+
+        static function InsertTags($id_article , $id_tag): bool
+        {
+            global $db;
+    
+            $query = "INSERT INTO articles_tags (id_article, id_tag) VALUES (:id_article , :id_tag)";
+            $stm = $db->prepare($query);
+            $stm->bindValue(':id_article', $id_article, PDO::PARAM_STR);
+            $stm->bindValue(':id_tag', $id_tag, PDO::PARAM_STR);
+            $stm->execute();
+    
+            return true;
+        }   
+        
 
     // ************************************************** GET ALL ARTICLES
 
@@ -56,7 +83,7 @@ class Wiki
         JOIN users ON articles.id_user = users.id
         WHERE articles.status = 'published'
         ORDER BY create_at DESC
-        LIMIT 5;
+        ;
         ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -87,12 +114,11 @@ class Wiki
     if ($exe) {
         $result = $stm->fetch(PDO::FETCH_ASSOC);
 
-        return $result !== false ? $result : null;
+        return $result;
     } else {
         return null;
     }
     }
-
 
     // ************************************************** SOFT DELETE
 
