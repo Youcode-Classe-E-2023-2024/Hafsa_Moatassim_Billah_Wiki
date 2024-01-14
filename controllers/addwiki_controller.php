@@ -16,8 +16,6 @@ if(isset($_POST['submit']) && isset($_FILES['img']['name'])) {
     $commaSeparatedIds = implode(',', $sanitizedIds);
 
 
-    // dd($tagIdsArray);
-
     $uploadDir = 'assets/image/';
     $originalFileName = $_FILES['img']['name'];
     $uploadFile = $uploadDir . basename($originalFileName);

@@ -95,3 +95,17 @@ if (isset($_GET['cat_id'])) {
 }
 ?>
 
+  <!-- Update article  -->
+<?php
+if (isset($_GET['update_articles_id'])) {
+    $articleIdToDelete = $_GET['update_articles_id'];
+    
+    $update = Wiki::updateWiki($articleId, $title, $content, $file, $category, $id_user);
+
+    if ($update) {
+        header('location:index.php?page=addwiki');
+    } else {
+        echo "Error updating article.";
+    }
+}
+?> 

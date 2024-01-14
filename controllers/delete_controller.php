@@ -55,6 +55,5 @@ if (isset($_GET['catdelete_id'])) {
         // echo "Error deleting category.";
     }
 }
-
-
 ?>
+

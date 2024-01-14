@@ -17,15 +17,14 @@ if (isset($_POST["req"]) && $_POST["req"] == "submit") {
     move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
 
     $errors = [
-        "firstName_err" => Validation::validateUsername($firstname),
-        "lastName_err" => Validation::validateUsername($lastname),
+        "firstName_err" => Validation::validateFirstname($firstname),
+        "lastName_err" => Validation::validateLastname($lastname),
         "email_err" => Validation::validateEmail($email),
         "password_err" => Validation::validatePassword($password),
-        "userexists_err" => Validation::checkIfUserExist($email, $db),
+        "userexists_err" => Validation::checkIfUserExist($email),
     ];
 
     if (array_filter($errors)) {
-        // Handle errors
         echo json_encode(["errors" => $errors]);
         exit;
     }
