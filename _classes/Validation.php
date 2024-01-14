@@ -3,12 +3,22 @@
 class Validation
 {
 
-    static function validateUsername($lastName)
+    static function validateFirstname($Firstname)
     {
-        if (empty($lastName)) {
+        if (empty($Firstname)) {
             return "Username is required";
-        } elseif (!preg_match('/^[a-zA-Z0-9]{3,}$/', $lastName)) {
-            return "Invalid username. Username should be at least 3 characters long.";
+        } elseif (!preg_match('/^[a-zA-Z0-9]{3,}$/', $Firstname)) {
+            return "Invalid firstname. firstname should be at least 3 characters long.";
+        }
+        return false;
+    } 
+
+    static function validateLastname($Lastname)
+    {
+        if (empty($Lastname)) {
+            return "Username is required";
+        } elseif (!preg_match('/^[a-zA-Z0-9]{3,}$/', $Lastname)) {
+            return "Invalid lastname. Lastname should be at least 3 characters long.";
         }
         return false;
     }
