@@ -12,20 +12,13 @@
         </a>
         <div class="rounded-xl overflow-hidden">
           <img src="assets/image/<?= $wiki['file'] ?>" alt="">
-        </div>
-      </div>
-      <div>
-        <div class="pl-12">
-          <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
-          <p class="mb-4 font-semibold text text-black"><?= date('F j, Y', strtotime($wiki['create_at'])) ?></p>
-
           <?php 
-          if(!empty($cats)){
-          foreach($cats as $cat){?>
+          if(!empty($newTagsArray)){
+          foreach($newTagsArray as $tag){?>
           <button
-            class="middle none center mr-4 rounded-lg bg-green-500 py-2 px-2 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="middle none center mt-4 rounded-lg bg-green-500 py-2 px-2 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             data-ripple-light="true">
-            <?= $cat['name'] ?>
+            <?= $tag ?>
           </button>
           <?php } }else{ ?>
             <button
@@ -34,6 +27,14 @@
             No tags
           </button>
             <?php } ?>
+        </div>
+      </div>
+      <div>
+        <div class="pl-12">
+          <h3 class="mb-4 font-semibold text-xl text-black"><?= $wiki['title'] ?></h3>
+          <p class="mb-4 font-semibold text text-black"><?= date('F j, Y', strtotime($wiki['create_at'])) ?></p>
+
+
           <p class="peer mt-4 mb-6 text-black"><?= $wiki['content'] ?></p>
           <!-- <a href="index.php?page=update&id=<?= $ID ?>" class="text-blue-500 hover:underline">Update Article</a>
           <a href="index.php?page=delete&id=<?= $ID ?>" class="text-red-500 hover:underline">Delete Article</a> -->
