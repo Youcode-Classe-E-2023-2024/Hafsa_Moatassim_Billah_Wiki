@@ -1,5 +1,10 @@
 <?php
 
+$id = new User($_SESSION['id']);
+if($id->role !== 'admin'){
+    header('location: index.php?page=home');
+}
+
 // Tag add
 if (isset($_POST['tagSubmit'])) {
     $tagName = $_POST['tagName'];
