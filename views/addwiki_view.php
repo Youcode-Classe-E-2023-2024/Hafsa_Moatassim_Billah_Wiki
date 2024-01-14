@@ -90,7 +90,7 @@ if (!empty($userArticles)) {
                           <a href="index.php?page=delete&softdelete_id='.$article['id'].'">Delete</a>
                         </button>
                         <button  name ="delete" class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-green-400 border-green-500 text-white">
-                          <a href="index.php?page=delete&update_id='.$article['id'].'">Update</a>
+                          <a href="index.php?page=delete&update_articles_id='.$article['id'].'">Update</a>
                         </button>
                       </td>
                     </tr>

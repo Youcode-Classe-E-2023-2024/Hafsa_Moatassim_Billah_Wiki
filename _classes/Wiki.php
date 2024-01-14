@@ -27,6 +27,24 @@ class Wiki
         return $db->lastInsertId();    
     }
 
+    // ************************************************** UPDATE ARTICLE
+
+    static function updateWiki($articleId, $title, $content, $file, $category, $id_user): bool
+    {
+        global $db;
+    
+        $query = "UPDATE articles SET title = :title, content = :content, file = :file, id_user = :id_user, id_category = :id_category WHERE id = :articleId";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':title', $title, PDO::PARAM_STR);
+        $stm->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+        $stm->bindValue(':id_category', $category, PDO::PARAM_INT);
+        $stm->bindValue(':content', $content, PDO::PARAM_STR);
+        $stm->bindValue(':file', $file, PDO::PARAM_STR);
+        $stm->bindValue(':articleId', $articleId, PDO::PARAM_INT);
+    
+        return $stm->execute();
+    }
+    
     // ************************************************** Users Articles
 
     static function getUserArticles($userId) {
@@ -42,7 +60,7 @@ class Wiki
 
     // ************************************************** Insert to artciles_tag
 
-        static function InsertTags($id_article , $id_tag): bool
+    static function InsertTags($id_article , $id_tag): bool
         {
             global $db;
     
