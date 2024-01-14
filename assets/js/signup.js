@@ -39,27 +39,33 @@ signup.addEventListener('click', () => {
                 // console.log(data.errors);
                 var err= data.errors;
                 console.log(err);
-                if(err.firstName_err!= false){
-                    $("#First_err").text(err.firstName_err)
-                    
-                }else{
+                if (err.firstName_err !== false) {
+                    $("#First_err").text(err.firstName_err);
+                } else {
                     $("#First_err").text('');
-
                 }
-                if(err.lastName_err!= false){
-                    $("#last_err").text(err.lastName_err)
-                }else{
+            
+                if (err.lastName_err !== false) {
+                    $("#last_err").text(err.lastName_err);
+                } else {
                     $("#last_err").text('');
                 }
-                if(err.email_err!= false || err.userexists_err!= false){
-                    $("#email_err").text(err.email_err)
-                    $("#email_err").text(err.userexists_err)
-                }else{
+            
+                if (err.email_err !== false) {
+                    $("#email_err").text(err.email_err);
+                }
+            
+                if (err.userexists_err !== false) {
+                    $("#email_err").text(err.userexists_err);
+                }
+            
+                if (!err.email_err && !err.userexists_err) {
                     $("#email_err").text('');
                 }
-                if(err.password_err!= false){
-                    $("#password_err").text(err.password_err)
-                }else{
+            
+                if (err.password_err !== false) {
+                    $("#password_err").text(err.password_err);
+                } else {
                     $("#password_err").text('');
                 }
                 
