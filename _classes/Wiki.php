@@ -32,7 +32,7 @@ class Wiki
     static function getUserArticles($userId) {
         global $db;
 
-        $query = "SELECT * FROM articles WHERE id_user = :user_id";
+        $query = "SELECT * FROM articles WHERE id_user = :user_id and status = 'published'";
         $stm = $db->prepare($query);
         $stm->bindValue(':user_id', $userId, PDO::PARAM_INT);
         $stm->execute();
